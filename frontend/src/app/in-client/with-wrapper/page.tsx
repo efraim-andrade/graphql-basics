@@ -1,5 +1,4 @@
-import { gql } from "@apollo/client";
-import { clientOnServerSide } from "~/lib/apollo";
+import { gql, useQuery } from "@apollo/client";
 
 type User = {
   id: string;
@@ -15,11 +14,9 @@ const GET_USER = gql`
   }
 `;
 
-export default async function WithClientSide() {
-  const { data, loading }: { data: { users: User[] }; loading: boolean } =
-    await clientOnServerSide().query({
-      query: GET_USER,
-    });
+export default function WithClientWrapper() {
+  const { data, loading } = useQuery<{ users: User[] }>(GET_USER);
+  console.log("🚀 ~ WithClientWrapper ~ data:", data);
 
   return (
     <main className="w-screen h-screen flex flex-col item-center justify-center">
