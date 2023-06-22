@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { clientOnServerSide } from "~/lib/apollo";
+// import { clientOnServerSide } from "~/lib/apollo";
 
 type User = {
   id: string;
@@ -16,10 +16,10 @@ const GET_USER = gql`
 `;
 
 export default async function WithClientSide() {
-  const { data, loading }: { data: { users: User[] }; loading: boolean } =
-    await clientOnServerSide().query({
-      query: GET_USER,
-    });
+  // const { data, loading }: { data: { users: User[] }; loading: boolean } =
+  //   await clientOnServerSide().query({
+  //     query: GET_USER,
+  //   });
 
   return (
     <main className="w-screen h-screen flex flex-col item-center justify-center">
@@ -27,7 +27,7 @@ export default async function WithClientSide() {
         Hello GraphQL on Client
       </h1>
 
-      <div className="mt-12 w-1/2 flex items-center justify-center mx-auto">
+      {/* <div className="mt-12 w-1/2 flex items-center justify-center mx-auto">
         {loading && <p className=" text-center">Loading...</p>}
 
         {!loading && !data && <p>No data</p>}
@@ -42,7 +42,7 @@ export default async function WithClientSide() {
               ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </main>
   );
 }
